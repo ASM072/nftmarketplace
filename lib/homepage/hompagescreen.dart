@@ -145,7 +145,7 @@ class HomePage extends StatelessWidget {
     required double nftPrice,
   }) {
     return Container(
-      margin: EdgeInsets.only(top: 30, left: 30, right: 20, bottom: 20),
+      margin: EdgeInsets.only(top: 30, left: 30, right: 30, bottom: 30),
       height: 65,
       child: Row(
         children: [
@@ -171,7 +171,8 @@ class HomePage extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 16,
+                      fontSize: 14,
+                      color: Colors.black
                     ),
                   ),
                   SizedBox(
@@ -180,8 +181,8 @@ class HomePage extends StatelessWidget {
                   Text(
                     nftModel,
                     style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
+                      fontSize: 12,
+                      color: Colors.blue,
                     ),
                   ),
                 ],
@@ -270,24 +271,24 @@ class HomePage extends StatelessWidget {
                 ),
                 trendingNFT(
                   nftImage:
-                      'images/NFT1.png',
+                      'assets/images/NFT1.png',
                   nftModel: 'Ethereum',
                   nftName: 'Bored Ape 1',
+                  nftPrice: 50,
+                ),
+                trendingNFT(
+                  nftImage:
+                      '/assets/images/NFT2.png',
+                  nftModel: 'Binance Smart Chain',
+                  nftName: 'Bored Ape 2',
+                  nftPrice: 25,
+                ),
+                trendingNFT(
+                  nftImage:
+                      'assets/images/NFT4.png',
+                  nftModel: 'Polkadot',
+                  nftName: 'Bored Ape 3',
                   nftPrice: 10,
-                ),
-                trendingNFT(
-                  nftImage:
-                      'https://assets.reebok.com/images/w_600,f_auto,q_auto/cd34290e1b57479399b3aae00137ab00_9366/Classics_Mesh_Tank_Top_White_FJ3179_01_standard.jpg',
-                  nftModel: 'Tank-tops',
-                  nftName: 'Classics mesh tank top',
-                  nftPrice: 15,
-                ),
-                trendingNFT(
-                  nftImage:
-                      'https://assets.reebok.com/images/w_600,f_auto,q_auto/cd34290e1b57479399b3aae00137ab00_9366/Classics_Mesh_Tank_Top_White_FJ3179_01_standard.jpg',
-                  nftModel: 'Tank-tops',
-                  nftName: 'Classics mesh tank top',
-                  nftPrice: 15,
                 ),
               ]
             ),
