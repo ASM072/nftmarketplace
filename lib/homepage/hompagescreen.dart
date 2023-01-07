@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, unnecessary_import, unused_import
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -12,7 +12,7 @@ import 'package:nftmarketplace/widgets/singlenftwidget.dart';
 
 
 class HomePage extends StatelessWidget {
-//late final HomePageTabBarnftModel homePageTabBarnftChain;
+//late final HomePageTabBarnftModel homePageTabBarnftModel;
 
   
   AppBar appBar(BuildContext context) {
@@ -31,19 +31,9 @@ class HomePage extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
         unselectedLabelColor: Colors.black,
-        labelColor: Colors.deepPurple,
-        tabs: [
-          SizedBox(
-          
-            width: 30,
-            child: Text(
-              "All",
-              style: TextStyle(
-                color: Colors.black
-              ),
-            ),
-          ),
-          
+        labelColor: Colors.deepPurple[200],
+        tabs: [ 
+          Text("All",),
           Text("Top"),
           Text("Arts"),
           Text("Sports"),
@@ -70,7 +60,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            
             child: Column(
               
               children: [
@@ -267,6 +256,7 @@ class HomePage extends StatelessWidget {
       child: DefaultTabController(
         length: 4,
         child: Scaffold(
+          backgroundColor: Colors.deepPurple[200],
           appBar: appBar(context),
           body: TabBarView(
             children: [
@@ -339,7 +329,7 @@ class HomePage extends StatelessWidget {
                   ),
                   Divider(),
                   Container(
-                    height: 200,
+                    height: 100,
                     margin: EdgeInsets.all(10.0),
                     color: Colors.deepPurple,
                     child: Column(

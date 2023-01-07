@@ -1,75 +1,82 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nftmarketplace/bottombar/bottombar.dart';
+import 'package:nftmarketplace/routes/pagerouter.dart';
 import 'package:nftmarketplace/svgimages/svg_images.dart';
 import 'package:nftmarketplace/widgets/buttonwidget.dart';
 import 'package:nftmarketplace/widgets/inputtextfieldwidget.dart';
 
 class SignupScreen extends StatelessWidget {
-  
-  Widget topPart() {
-        return Column(
-          children: [
-            Image.asset(
-              "images/Logo.png",
-              height: 150,
+  Widget topPart({required BuildContext context}) {
+    return Column(
+      children: [
+        Image.asset(
+          "images/Logo.png",
+          height: 150,
+        ),
+        InputTextField(
+          hintText: "Full name",
+          obscureText: false,
+        ),
+        InputTextField(
+          hintText: "Email",
+          obscureText: false,
+        ),
+        InputTextField(
+          hintText: "Password",
+          obscureText: true,
+        ),
+        InputTextField(
+          hintText: "Confirm Password",
+          obscureText: true,
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
+          ),
+          child: ButtonWidget(
+            onPress: () {
+              PageRouting.goToNextPage(
+                context: context,
+                navigateTo: BottomBar(),
+              );
+            },
+            color: Colors.deepPurple,
+            text: "Create an account",
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        RichText(
+          text: TextSpan(
+            text: "By sigining up you agress to our\n\t",
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: "NovaFlat",
+              fontSize: 16,
             ),
-            InputTextField(
-              hintText: "Full name",
-              obscureText: false,
-            ),
-            InputTextField(
-              hintText: "Email",
-              obscureText: false,
-            ),
-            InputTextField(
-              hintText: "Password",
-              obscureText: true,
-            ),
-            InputTextField(
-              hintText: "Confirm Password",
-              obscureText: true,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
-              ),
-              child: ButtonWidget(
-                onPress: () {},
-                color: Colors.deepPurple,
-                text: "Create an account",
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            RichText(
-              text: TextSpan(
-                text: "By sigining up you agress to our\n\t",
+            children: <TextSpan>[
+              TextSpan(
+                text: "Terms\t",
                 style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: "NovaFlat",
-                  fontSize: 16,
-                ),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: "Terms\t",
-                    style: TextStyle(
                   color: Colors.deepPurple,
                   fontFamily: "NovaFlat",
                   fontSize: 16,
                 ),
-                  ),
-                  TextSpan(
-                    text: "and\t",
-                    style: TextStyle(
+              ),
+              TextSpan(
+                text: "and\t",
+                style: TextStyle(
                   fontFamily: "NovaFlat",
                   fontSize: 16,
                 ),
-                  ),
-                  TextSpan(
-                    text: "Conditions of Use",
-                    style: TextStyle(
+              ),
+              TextSpan(
+                text: "Conditions of Use",
+                style: TextStyle(
                   color: Colors.deepPurple,
                   fontFamily: "NovaFlat",
                   fontSize: 16,
@@ -82,7 +89,8 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
-  Widget socialButton({required Widget child, required VoidCallback onPressed}) {
+  Widget socialButton(
+      {required Widget child, required VoidCallback onPressed}) {
     return MaterialButton(
       shape: OutlineInputBorder(
         borderSide: BorderSide(
@@ -95,7 +103,8 @@ class SignupScreen extends StatelessWidget {
       child: child,
     );
   }
-Widget bottomPart({required BuildContext context}) {
+
+  Widget bottomPart({required BuildContext context}) {
     return SizedBox(
       height: 300,
       child: Column(
@@ -176,6 +185,7 @@ Widget bottomPart({required BuildContext context}) {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurple[200],
       body: SafeArea(
         child: Center(
           child: ListView(
@@ -184,33 +194,29 @@ Widget bottomPart({required BuildContext context}) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  topPart(),
+                  topPart(context: context),
                   bottomPart(context: context),
                   Divider(),
                   Container(
                     height: 200,
                     margin: EdgeInsets.all(10.0),
                     color: Colors.deepPurple,
-                    child: Column(
-                    children: [
+                    child: Column(children: [
                       Text(
-                      
-                      "About",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
+                        "About",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    Text(
-                      
-                      "Contact Us",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
+                      Text(
+                        "Contact Us",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),  
-                    ]
-                  ),
+                    ]),
                   )
                 ],
               )

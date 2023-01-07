@@ -74,7 +74,7 @@ IDI_APP_ICON            ICON                    "resources\\app_icon.ico"
 
 VS_VERSION_INFO VERSIONINFO
  FILEVERSION VERSION_AS_NUMBER
- PRODUCTVERSION VERSION_AS_NUMBER
+ nftVERSION VERSION_AS_NUMBER
  FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
 #ifdef _DEBUG
  FILEFLAGS VS_FF_DEBUG
@@ -95,8 +95,8 @@ BEGIN
             VALUE "InternalName", "nftmarketplace" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "nftmarketplace.exe" "\0"
-            VALUE "ProductName", "nftmarketplace" "\0"
-            VALUE "ProductVersion", VERSION_AS_STRING "\0"
+            VALUE "nftName", "nftmarketplace" "\0"
+            VALUE "nftVersion", VERSION_AS_STRING "\0"
         END
     END
     BLOCK "VarFileInfo"

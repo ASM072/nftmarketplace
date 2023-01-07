@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 class SinglenftWidget extends StatefulWidget {
   final String nftImage;
   final String nftName;
-  final String nftModel;
+  final String nftChain;
   final double nftPrice;
-  final double nftOldPrice;
-  final VoidCallback onPressed;
+  final double nftLaunchPrice;
+  final VoidCallback? onPressed;
   SinglenftWidget({ 
      required this.nftImage,
      required this.nftName,
-     required this.nftModel,
+     required this.nftChain,
      required this.nftPrice,
-     required this.nftOldPrice,
-     required this.onPressed,
+     required this.nftLaunchPrice,
+     this.onPressed,
   });
 
   @override
@@ -30,7 +30,7 @@ class _SinglenftWidgetState extends State<SinglenftWidget> {
       onTap: widget.onPressed,
       child: Container(
         height: 250,
-        margin: const EdgeInsets.all(10.0),
+        margin:  EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(5),
@@ -55,31 +55,31 @@ class _SinglenftWidgetState extends State<SinglenftWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding:  EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
+                   SizedBox(
                     height: 5,
                   ),
                   Text(
                     widget.nftName,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(
+                   SizedBox(
                     height: 5,
                   ),
                   Text(
-                    widget.nftModel,
+                    widget.nftChain,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       color: Colors.deepPurple,
                     ),
                   ),
-                  const SizedBox(
+                   SizedBox(
                     height: 5,
                   ),
                   Row(
@@ -87,15 +87,15 @@ class _SinglenftWidgetState extends State<SinglenftWidget> {
                       Text(
                         "\$ ${widget.nftPrice}",
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style:  TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      const SizedBox(
+                       SizedBox(
                         width: 15,
                       ),
                       Text(
-                        "\$ ${widget.nftOldPrice}",
+                        "\$ ${widget.nftLaunchPrice}",
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
+                        style:  TextStyle(
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.lineThrough),
                       )
