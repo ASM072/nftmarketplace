@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, unnecessary_import, unused_import
+// ignore_for_file: avoid_unnecessary_containers, unnecessary_import, unused_import, deprecated_member_use
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
