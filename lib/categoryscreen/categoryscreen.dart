@@ -56,7 +56,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           color: Colors.transparent,
           ),
         labelStyle: TextStyle(
-          fontSize: 16,
+          fontSize: 20,
           fontWeight: FontWeight.w600,
         ),
         unselectedLabelColor: Colors.black,
@@ -109,7 +109,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           Text(
             leftText,
             style: TextStyle(
-              fontSize: 17,
+              fontSize: 20,
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),

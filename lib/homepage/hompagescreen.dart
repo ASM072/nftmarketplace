@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
         isScrollable: true,
         indicatorSize: TabBarIndicatorSize.label,
         labelStyle: TextStyle(
-          fontSize: 14,
+          fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
         unselectedLabelColor: Colors.black,
@@ -151,7 +151,7 @@ class HomePage extends StatelessWidget {
           Text(
             leftText,
             style: TextStyle(
-              fontSize: 17,
+              fontSize: 20,
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
