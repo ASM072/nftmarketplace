@@ -1,13 +1,17 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nftmarketplace/data/homepagedata.dart';
 import 'package:nftmarketplace/svgimages/svg_images.dart';
+import 'package:nftmarketplace/widgets/dropdownbuttonwidget.dart';
 
 class DetailScreen extends StatefulWidget {
   final SinglenftModel data;
-  DetailScreen({required this.data});
+
+  DetailScreen({
+    required this.data,
+    required,
+  });
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
@@ -28,15 +32,13 @@ AppBar buildAppBar() {
       IconButton(
         icon: SvgPicture.asset(
           SvgImages.heart,
-        ), 
-        onPressed: (){},
         ),
+        onPressed: () {},
+      ),
       IconButton(
-          icon: SvgPicture.asset(
-            SvgImages.upload
-          ),
-          onPressed: () {},
-        ),
+        icon: SvgPicture.asset(SvgImages.upload),
+        onPressed: () {},
+      ),
     ],
   );
 }
@@ -53,29 +55,26 @@ class _DetailScreenState extends State<DetailScreen> {
             leading: CircleAvatar(
               radius: 35,
               backgroundImage: AssetImage(
-                "images/NFT1.png"
-              ),
+                "images/NFT1.png",
+                ),
             ),
             title: Column(
               children: [
                 Text(
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                  ),
-                  widget.data.nftName
-                  ),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
+                    widget.data.nftName),
                 SizedBox(
                   height: 5,
                 ),
-                Text(
-                  widget.data.nftChain,
-                  style: TextStyle(
-                    color: Colors.purple[200],
-                    fontSize: 18,
-                  )
-                ),
+                Text(widget.data.nftChain,
+                    style: TextStyle(
+                      color: Colors.purple[200],
+                      fontSize: 18,
+                    )),
               ],
             ),
             trailing: Column(
@@ -95,20 +94,57 @@ class _DetailScreenState extends State<DetailScreen> {
               ],
             ),
           ),
-          Padding(padding: EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Image.network(
-                  widget.data.nftImage,
-                  fit: BoxFit.cover,
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: Image.network(
+                    widget.data.nftImage,
+                    fit: BoxFit.cover,
+                    height: 300,
+                    width: 300,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: DropdownButtonWidget(
+                        hintText: "Editions", 
+                        item: [
+                          "1",
+                          "2",
+                          "3",
+                          "4",
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: MaterialButton(
+              elevation: 0,
+              height: 50,
+              color: Colors.blue,
+              shape: RoundedRectangleBorder(
+                side: BorderSide.none,
+                borderRadius: BorderRadius.circular(5),
+              ),
+              onPressed: () {  },
+              child: Text(
+                "Add to cart",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600, 
                 ),
               ),
-              Row()
-            ],
-          ),
-          ),
+            ),
+          )
         ],
       ),
     );
