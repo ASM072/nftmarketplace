@@ -6,18 +6,17 @@ import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nftmarketplace/data/categorydata.dart';
 import 'package:nftmarketplace/data/homepagedata.dart';
+import 'package:nftmarketplace/detailscreen/detailscreen.dart';
+import 'package:nftmarketplace/routes/pagerouter.dart';
 import 'package:nftmarketplace/svgimages/svg_images.dart';
 import 'package:nftmarketplace/tabbar/homepagetabbar/homepagetabbar.dart';
 import 'package:nftmarketplace/widgets/singlenftwidget.dart';
 
-
 class HomePage extends StatelessWidget {
 //late final HomePageTabBarnftModel homePageTabBarnftModel;
 
-  
   AppBar appBar(BuildContext context) {
     return AppBar(
-      
       backgroundColor: Colors.deepPurple,
       bottom: TabBar(
         labelPadding: EdgeInsets.symmetric(horizontal: 22),
@@ -32,60 +31,58 @@ class HomePage extends StatelessWidget {
         ),
         unselectedLabelColor: Colors.black,
         labelColor: Colors.deepPurple[200],
-        tabs: [ 
-          Text("All",),
+        tabs: [
+          Text(
+            "All",
+          ),
           Text("Top"),
           Text("Arts"),
           Text("Sports"),
-          ],
+        ],
       ),
       elevation: 0.0,
-      centerTitle: true, 
-      
+      centerTitle: true,
       title: Row(
-        
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            
-            height: 50,
-            width: 50,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              
-              children: [
-                Image.asset("images/Logo.png", alignment: Alignment.centerLeft, fit: BoxFit.fill,),
-              ],
-            ),
-          ),
-          SizedBox(
-            child: Column(
-              
-              children: [
-                
-                Text(
-                  "NFT MARKETPLACE",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 50,
+              width: 50,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    "images/Logo.png",
+                    alignment: Alignment.centerLeft,
+                    fit: BoxFit.fill,
                   ),
-                ),
-                Text(
-                  "Collecting NFT is also an ART",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 12,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          )
-        ]
-      ),
+            SizedBox(
+              child: Column(
+                children: [
+                  Text(
+                    "NFT MARKETPLACE",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "Collecting NFT is also an ART",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ]),
       actions: [
-        
         IconButton(
           icon: RotationTransition(
             turns: AlwaysStoppedAnimation(90 / 360),
@@ -114,8 +111,7 @@ class HomePage extends StatelessWidget {
       height: 170,
       width: 170,
       margin: EdgeInsets.all(10.0),
-        child: SizedBox(
-          
+      child: SizedBox(
         child: ImageSlideshow(
           indicatorColor: Colors.blue,
           onPageChanged: (value) {
@@ -138,11 +134,11 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        ),
-      );
+      ),
+    );
   }
 
-   Widget showAllText({required String leftText}) {
+  Widget showAllText({required String leftText}) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
       child: Row(
@@ -167,7 +163,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
 
   Widget trendingNFT({
     required String nftImage,
@@ -201,10 +196,9 @@ class HomePage extends StatelessWidget {
                     nftName,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: Colors.black
-                    ),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: Colors.black),
                   ),
                   SizedBox(
                     width: 5,
@@ -260,82 +254,80 @@ class HomePage extends StatelessWidget {
           appBar: appBar(context),
           body: TabBarView(
             children: [
-              ListView(
-                physics: BouncingScrollPhysics(),
-                children: [
-                  showAllText(
-                    leftText: "Spotlight"
+              ListView(physics: BouncingScrollPhysics(), children: [
+                showAllText(leftText: "Spotlight"),
+                Divider(),
+                buildAdBox(),
+                Divider(),
+                showAllText(
+                  leftText: "New",
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.0,
                   ),
-                  Divider(),
-                  buildAdBox(),
-                  Divider(),
-                  showAllText(
-                    leftText: "New",
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 12.0,
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    primary: true,
+                    itemCount: singlenftData.length,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.7,
                     ),
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      primary: true,
-                      itemCount: singlenftData.length,
-                      physics: NeverScrollableScrollPhysics(),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 0.7,
-                      ),
-                      itemBuilder: (context, index) {
-                        var arrivalDataStore = singlenftData[index];
+                    itemBuilder: (context, index) {
+                      var data = singlenftData[index];
 
-                        return SinglenftWidget(
-                          nftImage: arrivalDataStore.nftImage,
-                          nftName: arrivalDataStore.nftName,
-                          nftChain: arrivalDataStore.nftChain,
-                          nftLaunchPrice: arrivalDataStore.nftLaunchPrice,
-                          nftPrice: arrivalDataStore.nftPrice,
-                          onPressed: () {},
-                        );
-                      },
-                    ),
+                      return SinglenftWidget(
+                        nftImage: data.nftImage,
+                        nftName: data.nftName,
+                        nftChain: data.nftChain,
+                        nftLaunchPrice: data.nftLaunchPrice,
+                        nftPrice: data.nftPrice,
+                        onPressed: () {
+                          PageRouting.goToNextPage(
+                              context: context,
+                              navigateTo: DetailScreen(
+                                data: data,
+                              )
+                              );
+                        },
+                      );
+                    },
                   ),
-                  Divider(
-                    indent: 16,
-                    endIndent: 16,
-                  ),
-                  showAllText(
-                    leftText: "What\t's trending",
-                  ),
-                  trendingNFT(
-                    nftImage:
-                        'assets/images/NFT1.png',
-                    nftChain: 'Ethereum',
-                    nftName: 'Bored Ape 1',
-                    nftPrice: 50,
-                  ),
-                  trendingNFT(
-                    nftImage:
-                        '/assets/images/NFT2.png',
-                    nftChain: 'Binance Smart Chain',
-                    nftName: 'Bored Ape 2',
-                    nftPrice: 25,
-                  ),
-                  trendingNFT(
-                    nftImage:
-                        'assets/images/NFT4.png',
-                    nftChain: 'Polkadot',
-                    nftName: 'Bored Ape 3',
-                    nftPrice: 10,
-                  ),
-                  Divider(),
-                  Container(
-                    height: 100,
-                    margin: EdgeInsets.all(10.0),
-                    color: Colors.deepPurple,
-                    child: Column(
-                    children: [
-                      Text(
-                      
+                ),
+                Divider(
+                  indent: 16,
+                  endIndent: 16,
+                ),
+                showAllText(
+                  leftText: "What\t's trending",
+                ),
+                trendingNFT(
+                  nftImage: 'assets/images/NFT1.png',
+                  nftChain: 'Ethereum',
+                  nftName: 'Bored Ape 1',
+                  nftPrice: 50,
+                ),
+                trendingNFT(
+                  nftImage: '/assets/images/NFT2.png',
+                  nftChain: 'Binance Smart Chain',
+                  nftName: 'Bored Ape 2',
+                  nftPrice: 25,
+                ),
+                trendingNFT(
+                  nftImage: 'assets/images/NFT4.png',
+                  nftChain: 'Polkadot',
+                  nftName: 'Bored Ape 3',
+                  nftPrice: 10,
+                ),
+                Divider(),
+                Container(
+                  height: 100,
+                  margin: EdgeInsets.all(10.0),
+                  color: Colors.deepPurple,
+                  child: Column(children: [
+                    Text(
                       "About",
                       style: TextStyle(
                         color: Colors.white,
@@ -343,18 +335,15 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      
                       "Contact Us",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                       ),
-                    ),  
-                    ]
-                  ),
-                  )
-                ]
-              ),
+                    ),
+                  ]),
+                )
+              ]),
               HomePageTabBar(
                 nftData: topData,
               ),
@@ -365,13 +354,9 @@ class HomePage extends StatelessWidget {
                 nftData: sportsData,
               ),
             ],
-            
           ),
         ),
-        
       ),
-      
     );
-    
   }
 }

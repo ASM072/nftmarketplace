@@ -1,5 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nftmarketplace/data/homepagedata.dart';
+import 'package:nftmarketplace/svgimages/svg_images.dart';
 
 class DetailScreen extends StatefulWidget {
   final SinglenftModel data;
@@ -10,7 +14,31 @@ class DetailScreen extends StatefulWidget {
 }
 
 AppBar buildAppBar() {
-  return AppBar();
+  return AppBar(
+    backgroundColor: Colors.deepPurple,
+    elevation: 0,
+    centerTitle: true,
+    title: Text(
+      "Detailscreen",
+      style: TextStyle(
+        color: Colors.black,
+      ),
+    ),
+    actions: [
+      IconButton(
+        icon: SvgPicture.asset(
+          SvgImages.heart,
+        ), 
+        onPressed: (){},
+        ),
+      IconButton(
+          icon: SvgPicture.asset(
+            SvgImages.upload
+          ),
+          onPressed: () {},
+        ),
+    ],
+  );
 }
 
 class _DetailScreenState extends State<DetailScreen> {
@@ -18,6 +46,71 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
+      body: ListView(
+        physics: BouncingScrollPhysics(),
+        children: [
+          ListTile(
+            leading: CircleAvatar(
+              radius: 35,
+              backgroundImage: AssetImage(
+                "images/NFT1.png"
+              ),
+            ),
+            title: Column(
+              children: [
+                Text(
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20,
+                  ),
+                  widget.data.nftName
+                  ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  widget.data.nftChain,
+                  style: TextStyle(
+                    color: Colors.purple[200],
+                    fontSize: 18,
+                  )
+                ),
+              ],
+            ),
+            trailing: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.data.nftPrice.toString(),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+              ],
+            ),
+          ),
+          Padding(padding: EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: Image.network(
+                  widget.data.nftImage,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Row()
+            ],
+          ),
+          ),
+        ],
+      ),
     );
   }
 }

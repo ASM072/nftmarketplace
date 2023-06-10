@@ -2,6 +2,8 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:nftmarketplace/detailscreen/detailscreen.dart';
+import 'package:nftmarketplace/homepage/hompagescreen.dart';
 import 'package:nftmarketplace/loginscreen/loginscreen.dart';
 
 void main(){
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: PaymentScreen(),
-      home: LoginScreen(),
+      home: HomePage(),
     );
   }
 }
