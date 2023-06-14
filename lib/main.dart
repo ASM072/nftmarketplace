@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: PaymentScreen(),
-      home: HomePage(),
+      home: LoginScreen(),
     );
   }
 }
