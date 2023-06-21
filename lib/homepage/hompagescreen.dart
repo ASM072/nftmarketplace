@@ -254,7 +254,9 @@ class HomePage extends StatelessWidget {
           appBar: appBar(context),
           body: TabBarView(
             children: [
-              ListView(physics: BouncingScrollPhysics(), children: [
+              ListView(
+              physics: BouncingScrollPhysics(), 
+              children: [
                 showAllText(leftText: "Spotlight"),
                 Divider(),
                 buildAdBox(),

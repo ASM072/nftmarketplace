@@ -135,7 +135,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 side: BorderSide.none,
                 borderRadius: BorderRadius.circular(5),
               ),
-              onPressed: () {  },
+              onPressed: () { },
               child: Text(
                 "Add to cart",
                 style: TextStyle(
@@ -143,6 +143,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   fontWeight: FontWeight.w600, 
                 ),
               ),
+              
             ),
           ),
           ExpansionTile(

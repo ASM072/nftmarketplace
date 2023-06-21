@@ -1,10 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:nftmarketplace/detailscreen/detailscreen.dart';
-import 'package:nftmarketplace/homepage/hompagescreen.dart';
 import 'package:nftmarketplace/loginscreen/loginscreen.dart';
+import 'package:nftmarketplace/routes/pagerouter.dart';
+import 'package:nftmarketplace/yourcart/yourcart.dart';
 
 void main(){
   runApp(MyApp());
@@ -30,6 +29,9 @@ class MyApp extends StatelessWidget {
       ),
       // home: PaymentScreen(),
       home: LoginScreen(),
+      routes: {
+        MyRoutes.cartRoute: (context) => YourCart(),
+      },
     );
   }
 }

@@ -43,6 +43,20 @@ class _YourCartState extends State<YourCart> {
     );
   }
 
+  Widget itemWidget() {
+    return ListView.builder(
+      physics: BouncingScrollPhysics(),
+      itemCount: 5,
+      itemBuilder: (context, index) => ListTile(
+        leading: Icon(Icons.done),
+        trailing: IconButton(
+          icon: Icon(Icons.remove_circle_outline),
+          onPressed: () {},
+        ),
+      ),
+    );
+  }
+
   Widget singleCartItem() {
     return Card(
       child: SizedBox(
@@ -225,146 +239,139 @@ class _YourCartState extends State<YourCart> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[200],
       appBar: buildAppBar(),
-      body: ListView(
-        physics: BouncingScrollPhysics(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            "Your Cart",
+            style: TextStyle(
+              fontSize: 25,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 3,
+          ),
+          Text(
+            "You have 3 items in your Cart",
+            style: TextStyle(
+              color: Colors.grey[600],
+            ),
+          ),
+          Divider(),
+          itemWidget(),
+          //singleCartItem(),
+          //singleCartItem(),
+          //singleCartItem(),
+          //singleCartItem(),
           Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
+            padding: EdgeInsets.all(10.0),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    height: 50,
+                    margin: EdgeInsets.only(
+                      right: 20,
+                    ),
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                      "213132154",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: MaterialButton(
+                    elevation: 0,
+                    height: 40,
+                    color: Colors.orange[400],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7),
+                      side: BorderSide.none,
+                    ),
+                    child: Text(
+                      "Employ",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                )
+              ],
+            ),
+          ),
+          ListTile(
+            title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Your Cart",
+                  "Nft Value",
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 16,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
-                  height: 3,
+                  height: 2,
                 ),
                 Text(
-                  "You have 3 items in your Cart",
+                  "Your total amount of discount",
                   style: TextStyle(
-                    color: Colors.grey[600],
-                  ),
-                ),
-                singleCartItem(),
-                singleCartItem(),
-                singleCartItem(),
-                singleCartItem(),
-                singleCartItem(),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          height: 50,
-                          margin: EdgeInsets.only(
-                            right: 20,
-                          ),
-                          alignment: Alignment.centerLeft,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          padding: EdgeInsets.only(left: 10),
-                          child: Text(
-                            "213132154",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: MaterialButton(
-                          elevation: 0,
-                          height: 40,
-                          color: Colors.orange[400],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(7),
-                            side: BorderSide.none,
-                          ),
-                          child: Text(
-                            "Employ",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          onPressed: () {},
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                ListTile(
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Nft Value",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 2,
-                      ),
-                      Text(
-                        "Your total amount of discount",
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      )
-                    ],
-                  ),
-                  trailing: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        "\$193",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 2,
-                      ),
-                      Text(
-                        "\$-55.98",
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(20),
-                  child: ButtonWidget(
-                    color: Colors.deepPurple,
-                    text: "Checkout",
-                    onPress: () {
-                      PageRouting.goToNextPage(
-                        context: context,
-                        navigateTo: PaymentScreen(),
-                      );
-                    },
+                    color: Colors.black,
                   ),
                 )
               ],
+            ),
+            trailing: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "\$193",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  "\$-55.98",
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(20),
+            child: ButtonWidget(
+              color: Colors.deepPurple,
+              text: "Checkout",
+              onPress: () {
+                PageRouting.goToNextPage(
+                  context: context,
+                  navigateTo: PaymentScreen(),
+                );
+              },
             ),
           )
         ],
